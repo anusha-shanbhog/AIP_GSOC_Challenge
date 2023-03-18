@@ -52,8 +52,9 @@ def download_blocklists():
 
                     # Store the blocklist if it doesn't already exist
                     filename = datetime.datetime.now().strftime('%Y-%m-%d') + '-' + sublink
-                    if not os.path.exists(os.path.join(blocklists_folder, filename)):
-                        with open(os.path.join(blocklists_folder, filename), 'wb') as f:
+                    filepath = os.path.join(blocklists_folder, filename)
+                    if not os.path.exists(filepath):
+                        with open(filepath, 'wb') as f:
                             f.write(data)
                             print('Stored', filename)
                     else:
@@ -70,18 +71,22 @@ def download_blocklists():
             for file in os.listdir(offline_folder):
                 if file.endswith('.csv'):
                     try:
-                        # Copy the offline blocklist to the blocklists folder if it doesn't already exist
-                        source_path = os.path.join(offline_folder, file)
-                        target_path = os.path.join(blocklists_folder, file)
+                        # Add the timestamp to the filename
+                        timestamp = datetime.datetime.now().strftime('%Y-%m-%d')
+                        filename = f"{timestamp}-{file}"
 
-                        if not os.path.exists(target_path):
+                        # Check if the file already exists in the blocklists folder
+                        target_path = os.path.join(blocklists_folder, filename)
+                        if os.path.exists(target_path):
+                            print(f"Skipping {file} as file already exists.")
+                        else:
+                            # Copy the offline blocklist to the blocklists folder
+                            source_path = os.path.join(offline_folder, file)
                             with open(source_path, 'rb') as source_file, open(target_path, 'wb') as target_file:
                                 target_file.write(source_file.read())
-                                print('Stored', target_path)
-                        else:
-                            print('Skipping', file, 'as file already exists.')
+                                print(f"Stored {filename}")
                     except Exception as e:
-                        print('Error retrieving', source_path, ':', e)
+                        print(f"Error retrieving {source_path}: {e}")
 
 
 if __name__ == '__main__':
