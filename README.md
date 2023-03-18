@@ -10,7 +10,7 @@ Tech used: Python
 The project iterates over all the sublinks of the URL's provided in the sources. For each sublink, if it finds a file with .csv extension, it downloads it and 
 adds a date timestamp to it(if the file is not present). If present, it skips storing it again.
 
-Similarly, the tool works for offline files stored in the offline_folders array in the sources.json file. The downloaded blocklists(from both online and offline sources) can be viewed in the blocklists_generated folder.
+Similarly, the tool works for offline files stored in the offline_folders array in the sources.json file. The downloaded blocklists(from both online and offline sources) can be viewed in the blocklists_downloaded folder.
 
 
 #### Files and folders:
@@ -18,7 +18,7 @@ sources.json: It is used to store the list of sources from which blocklists have
 
 aip assignment.py: It is the main python tool to generate the blocklists
 
-blocklists_generated: It is the folder in which the generated blocklists from online and offline are stored along with a timestamp indictaing date of generation
+blocklists_downloaded: It is the folder in which the generated blocklists from online and offline are stored along with a timestamp indictaing date of generation
 
 blocklists_offline: It is the folder in which the set of offline blocklist sources(in .csv form) are stored
 
