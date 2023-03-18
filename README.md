@@ -29,4 +29,4 @@ blocklists_offline: It is the folder in which the set of offline blocklist sourc
 
 2. Run the tool aip assignment.py in Python
 
-3. Check the blocklists_generated folder to view the output
+3. Check the blocklists_downloaded folder to view the output
