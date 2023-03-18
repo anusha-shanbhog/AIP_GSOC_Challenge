@@ -1,0 +1,8 @@
+{
+    "sources": [
+        "https://mcfp.felk.cvut.cz/publicDatasets/CTU-AIPP-BlackList/Latest/"
+    ],
+    "offline_folders": [
+        "./blocklists_offline"
+    ]
+}
